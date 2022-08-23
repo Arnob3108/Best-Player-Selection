@@ -3,7 +3,7 @@ let count = 0;
 let buttons = document.querySelectorAll('.btn-primary');
 for (let button of buttons) {
     button.addEventListener('click', function () {
-        let playerName = button.parentNode.children[0].innerText;
+        let playerName = button.parentNode.parentNode.children[0].innerText;
         let player = {
             playerName: playerName,
         };
@@ -32,3 +32,4 @@ for (let button of buttons) {
         button.style.backgroundColor = '#758283';
     });
 }
+
