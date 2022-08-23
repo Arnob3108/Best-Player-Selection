@@ -30,7 +30,6 @@ for (let button of buttons) {
             setTextElementValueById('count', count);
         }
         button.setAttribute('disabled', true);
-        button.style.backgroundColor = '#758283';
     });
 }
 
