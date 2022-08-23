@@ -19,7 +19,7 @@ for (let button of buttons) {
             li.innerHTML = selectedPlayers[i].playerName;
             selectedPlayersContainer.appendChild(li);
             count = i + 1;
-
+            // ~~~~~~~~~~~~~validation ~~~~~~~~~~~~~~~
             if (selectedPlayersContainer.childNodes.length > 5) {
                 removeLastChild('selecting-players');
                 button.removeAttribute('disabled');
@@ -41,7 +41,7 @@ document.getElementById('btn-calculate').addEventListener('click', function () {
     let playerAmount = getInputFieldValueById('each-player-field');
     let ol = document.getElementById('selecting-players');
     let numberOfPlayersSelected = ol.childNodes.length;
-
+    //~~~~~~~~~~~~~~~~~~~~~ validation ~~~~~~~~~~~~~~~~~~~
     if (isNaN(playerAmount)) {
         alert('Enter a valid Amount');
         playerElement.value = '';
@@ -69,7 +69,7 @@ document.getElementById('total-calculate').addEventListener('click', function ()
     let managerAmount = getInputFieldValueById('manager-field');
     let coachAmount = getInputFieldValueById('coach-field');
 
-    // validation
+    //~~~~~~~~~~~~~~~~~~~~~~~ validation ~~~~~~~~~~~~~~~~~~~~~~
     if (isNaN(managerAmount)) {
         alert('Enter a valid Amount');
         managerElement.value = '';
@@ -87,4 +87,8 @@ document.getElementById('total-calculate').addEventListener('click', function ()
         return;
     }
 
+    let playerExpenseAmount = getTextElementValueById('player-expense');
+
+    let totalAmount = managerAmount + coachAmount + playerExpenseAmount;
+    setTextElementValueById('total-amount', totalAmount);
 });
