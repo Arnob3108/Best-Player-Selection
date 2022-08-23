@@ -1,3 +1,4 @@
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~player selection~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 let selectedPlayers = [];
 let count = 0;
 let buttons = document.querySelectorAll('.btn-primary');
@@ -33,3 +34,31 @@ for (let button of buttons) {
     });
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~budget~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+document.getElementById('btn-calculate').addEventListener('click', function () {
+    let playerElement = document.getElementById('each-player-field');
+    let playerAmount = getInputFieldValueById('each-player-field');
+    let ol = document.getElementById('selecting-players');
+    let numberOfPlayersSelected = ol.childNodes.length;
+
+    if (isNaN(playerAmount)) {
+        alert('Enter a valid Amount');
+        playerElement.value = '';
+        return;
+    } else if (playerAmount < 0) {
+        alert('We Do Not Accept Nagetive Amount');
+        playerElement.value = '';
+
+        return;
+    } else if (selectedPlayers.length == 0) {
+        alert('You have to choose players before calculating the cost');
+        playerElement.value = '';
+
+        return;
+    }
+
+    let playerExpenses = playerAmount * numberOfPlayersSelected;
+
+    setTextElementValueById('player-expense', playerExpenses);
+});
