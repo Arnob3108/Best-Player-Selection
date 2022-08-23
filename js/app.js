@@ -62,3 +62,29 @@ document.getElementById('btn-calculate').addEventListener('click', function () {
 
     setTextElementValueById('player-expense', playerExpenses);
 });
+
+document.getElementById('total-calculate').addEventListener('click', function () {
+    let managerElement = document.getElementById('manager-field');
+    let coachElement = document.getElementById('coach-field');
+    let managerAmount = getInputFieldValueById('manager-field');
+    let coachAmount = getInputFieldValueById('coach-field');
+
+    // validation
+    if (isNaN(managerAmount)) {
+        alert('Enter a valid Amount');
+        managerElement.value = '';
+        return;
+    }
+
+    if (isNaN(coachAmount)) {
+        alert('Enter a valid Amount');
+        coachElement.value = '';
+        return;
+    } else if (managerAmount < 0 || coachAmount < 0) {
+        managerElement.value = '';
+        coachElement.value = '';
+        alert('We Do Not Accept Nagetive Amount');
+        return;
+    }
+
+});
